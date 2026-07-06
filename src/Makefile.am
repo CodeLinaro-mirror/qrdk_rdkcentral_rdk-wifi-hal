@@ -106,6 +106,12 @@ if CMXB7_PORT
 librdk_wifihal_la_CPPFLAGS += -I$(top_srcdir)/../platform/intel
 librdk_wifihal_la_SOURCES += ../platform/intel/platform.c
 librdk_wifihal_la_LDFLAGS += -lrt
+
+if XER2_PORT
+librdk_wifihal_la_CPPFLAGS += -I$(top_srcdir)/../platform/broadcom
+librdk_wifihal_la_SOURCES += ../platform/broadcom/platform.c
+endif
+
 # HAL-IPC server sources
 if HAL_IPC
 librdk_wifihal_la_CPPFLAGS += -I$(top_srcdir)/../hal_ipc/server/

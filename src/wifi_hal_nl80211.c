@@ -78,7 +78,8 @@ void wifi_drv_eapol_timeouts(wifi_interface_info_t *interface, mac_address_t sta
 #endif
 
 #if defined(TCXB7_PORT) || defined(TCXB8_PORT) || defined(XB10_PORT) || defined(RDKB_ONE_WIFI_PROD) || \
-    (defined(SCXER10_PORT) && (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0)))
+    (defined(SCXER10_PORT) && (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0))) || \
+    defined(XER2_PORT)
 #include <rdk_nl80211_hal.h>
 #endif
 
@@ -2453,7 +2454,7 @@ int process_frame_mgmt(wifi_interface_info_t *interface, struct ieee80211_mgmt *
 #else
 #if defined(RDK_ONEWIFI) && (defined(TCXB7_PORT) || defined(CMXB7_PORT) || defined(TCXB8_PORT) || \
     defined(XB10_PORT) || defined(TCHCBRV2_PORT) || defined(SCXER10_PORT) || defined(VNTXER5_PORT) || \
-    defined(TARGET_GEMINI7_2) || defined(SCXF10_PORT) || defined(RDKB_ONE_WIFI_PROD))
+    defined(TARGET_GEMINI7_2) || defined(SCXF10_PORT) || defined(RDKB_ONE_WIFI_PROD)) || defined(XER2_PORT)
         callbacks->mgmt_frame_rx_callback(vap->vap_index, sta, (unsigned char *)mgmt, len, mgmt_type, dir, sig_dbm, phy_rate, recv_freq);
 #else
         callbacks->mgmt_frame_rx_callback(vap->vap_index, sta, (unsigned char *)mgmt, len, mgmt_type, dir, recv_freq);
@@ -2664,7 +2665,7 @@ int process_mgmt_frame(struct nl_msg *msg, void *arg)
     }
 #if defined(TCXB7_PORT) || defined(CMXB7_PORT) || defined(TCXB8_PORT) || defined(TCHCBRV2_PORT) || \
     defined(XB10_PORT) || defined(SCXER10_PORT) || defined(VNTXER5_PORT) || defined(TARGET_GEMINI7_2) || \
-    defined(SCXF10_PORT) || defined(RDKB_ONE_WIFI_PROD)
+    defined(SCXF10_PORT) || defined(RDKB_ONE_WIFI_PROD) || defined(XER2_PORT)
     if (tb[NL80211_ATTR_RX_PHY_RATE_INFO]) {
 	unsigned short fc, stype;
         phy_rate = nla_get_u32(tb[NL80211_ATTR_RX_PHY_RATE_INFO]) *10;
@@ -7076,7 +7077,7 @@ int update_channel_flags()
 
 #if defined(VNTXER5_PORT) || defined(TARGET_GEMINI7_2) || defined(TCXB7_PORT) ||                  \
     defined(TCXB8_PORT) || defined(XB10_PORT) || defined(SCXER10_PORT) || defined(SCXF10_PORT) || \
-    defined(_PLATFORM_BANANAPI_R4_)
+    defined(_PLATFORM_BANANAPI_R4_) || defined(XER2_PORT)
 // wiphy split dump support is not "selectable" -
 // NL80211_ATTR_SPLIT_WIPHY_DUMP is never fetched from the driver, see
 // kernel's nl80211_get_protocol_features()
@@ -7124,7 +7125,7 @@ static int fetch_nl80211_protocol_features(int nl_id, u32 *feat)
     (void)feat;
     return 0;
 }
-#endif // VNTXER5_PORT || TCXB7_PORT || TCXB8_PORT || XB10_PORT || SCXER10_PORT || TARGET_GEMINI7_2 || SCXF10_PORT
+#endif // VNTXER5_PORT || TCXB7_PORT || TCXB8_PORT || XB10_PORT || SCXER10_PORT || TARGET_GEMINI7_2 || SCXF10_PORT || XER2_PORT
 
 #ifdef FEATURE_SINGLE_PHY
 static int copy_radio_struct(wifi_radio_info_t *src, wifi_radio_info_t *dst)

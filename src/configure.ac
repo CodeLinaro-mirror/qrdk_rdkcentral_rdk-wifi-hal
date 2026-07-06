@@ -56,6 +56,7 @@ AM_CONDITIONAL([SCXER10_PORT], [test "x$SCXER10_PORT" = "xtrue"])
 AM_CONDITIONAL([SCXF10_PORT], [test "x$SCXF10_PORT" = "xtrue"])
 AM_CONDITIONAL([SKYSR213_PORT], [test "x$SKYSR213_PORT" = "xtrue"])
 AM_CONDITIONAL([CMXB7_PORT], [test "x$CMXB7_PORT" = "xtrue"])
+AM_CONDITIONAL([XER2_PORT], [test "x$XER2_PORT" = "xtrue"])
 AM_CONDITIONAL([HAL_IPC], [test "x$HAL_IPC" = "xtrue"])
 
 AC_PREFIX_DEFAULT(`pwd`)
