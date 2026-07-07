@@ -387,14 +387,12 @@ static wifi_interface_name_idex_map_t static_interface_index_map[] = {
 #endif /* SCXF10_PORT */
 
 #ifdef XER2_PORT // for Broadcom based platforms
-    {0, 0,  "wl0.1",   "",  "brlan0",  100,    0,      "private_ssid_2g"},
-    {1, 1,  "wl1.1",   "",  "brlan0",  100,    1,      "private_ssid_5g"},
-    {0, 0,  "wl0.2",   "",  "brlan9",  101,    2,      "iot_ssid_2g"},
-    {1, 1,  "wl1.2",   "",  "brlan10", 101,    3,      "iot_ssid_5g"},
-    {0, 0,  "wl0.7",   "",  "brlan6",    0,    12,     "mesh_backhaul_2g"},
-    {1, 1,  "wl1.7",   "",  "brlan7",    0,    13,     "mesh_backhaul_5g"},
-    {0, 0,  "wl0",     "",  "",          0,    14,     "mesh_sta_2g"},
-    {1, 1,  "wl1",     "",  "",          0,    15,     "mesh_sta_5g"},
+    {0, 0,  "wl0.1",   "",  "brlan0",    100,    0,      "private_ssid_2g"},
+    {1, 1,  "wl1.1",   "",  "brlan0",    100,    1,      "private_ssid_5g"},
+    {0, 0,  "wl0.7",   "",  "brlan112",  112,    12,     "mesh_backhaul_2g"},
+    {1, 1,  "wl1.7",   "",  "brlan113",  113,    13,     "mesh_backhaul_5g"},
+    {0, 0,  "wl0",     "",  "",            0,    14,     "mesh_sta_2g"},
+    {1, 1,  "wl1",     "",  "",            0,    15,     "mesh_sta_5g"},
 #endif /* XER2_PORT */
 
     // for Intel based platforms
